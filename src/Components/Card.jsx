@@ -1,9 +1,17 @@
 import { addToCart } from "../Redux/CartSlice";
 import { useDispatch } from "react-redux";
+import toast from "react-hot-toast"
 const Card = (props)=>{
     const dispatch = useDispatch();
     const handleAddToCart = (data)=>{
         dispatch(addToCart(data));
+         toast.success(`${data.title} added to cart 🛒`, {
+    style: {
+      borderRadius: "10px",
+      background: "#333",
+      color: "#fff",
+    },
+  }); 
 
     }
     return (

@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { updateCart } from "../Redux/CartSlice";
 import { useState } from "react";
+import toast from "react-hot-toast";
 const CardPageCard = (props)=>{
     const dispatch = useDispatch();
     const items = useSelector((store)=>store.cart.items)
@@ -14,11 +15,27 @@ const CardPageCard = (props)=>{
             }
             else{
                 dispatch(updateCart({id,value}))
+                 toast.success(`${props.data.title.slice(0,19)}... quantity updated to ${value} 🛒`, {
+    style: {
+      borderRadius: "10px",
+      background: "#333",
+      color: "#fff",
+    },
+  });
+                
+
             }
     }
     const tempItems = useSelector((store)=>store.cart.tempItems)
      const removehandle = (id)=>{
         dispatch(removeFromCart(id));
+    toast.success(`${props.data.title.slice(0,19)}... removed from  cart 🛒`, {
+    style: {
+      borderRadius: "10px",
+      background: "#333",
+      color: "#fff",
+    },
+  }); 
     }
     return (
         <div className="flex sm:flex-row flex-col gap-2 sm:gap-8 border-b-1 border-gray-200 pb-4">
