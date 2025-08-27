@@ -12,16 +12,26 @@ const CardPageCard = (props)=>{
             if(value < 1){
                 alert("Quantity must be atleast 1");
                 setValue(props.data.quantity)   
-            }
+            }else if (Value === props.data.quantity) {
+    
+    toast(`${props.data.title.slice(0,19)}... is already set to ${Value} ⚡`, {
+      icon: "ℹ️",
+      style: {
+        borderRadius: "10px",
+        background: "#222",
+        color: "#fff",
+      },
+    });
+  }
             else{
                 dispatch(updateCart({id,value}))
                  toast.success(`${props.data.title.slice(0,19)}... quantity updated to ${value} 🛒`, {
-    style: {
-      borderRadius: "10px",
-      background: "#333",
-      color: "#fff",
-    },
-  });
+                style: {
+                borderRadius: "10px",
+                background: "#333",
+                color: "#fff",
+                },
+                });
                 
 
             }
